@@ -2,22 +2,29 @@
 const morgan = require('morgan')
 const express = require('express')
 const app = express();
-//routes
+//Routers
 const empleados = require('./routes/empleados')
+const user = require('./routes/users')
+//Middleware
+const auth = require('./middleware/auth')
+const notFound = require('./middleware/notFound')
+const index = require('./middleware/index')
 
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.get('/', async (req, res, next) => {
-    return res.status(200).json({ code: 1, message: "Bienvenidos a RH de Node.js" })
-})
+/*Mensaje de bienvenida*/
+app.get('/', index)
+/*Acceso al usuario */
+app.use("/user", user)
+/*Verificación de usuario, filtro para no acceder a la base de datos */
+app.use(auth)
+/*Base de datos de empleados */
 app.use("/rhnode", empleados)
-
-app.use((req, res, next) => {
-    return res.status(404).json({ code: 404, message: "URL no encontrada" })
-})
-
+/*Filtro de error por url */
+app.use(notFound)
+//Server
 app.listen(process.env.PORT || 3000, () => {
     console.log('Server is running...');
 });
