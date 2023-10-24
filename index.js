@@ -2,7 +2,7 @@
 const morgan = require('morgan')
 const express = require('express')
 const app = express();
-//Routers
+//Routes
 const empleados = require('./routes/empleados')
 const user = require('./routes/users')
 //Middleware
