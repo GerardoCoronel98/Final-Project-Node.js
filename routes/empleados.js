@@ -66,8 +66,11 @@ empleados.patch('/:id([0-9]{1,3})', async (req, res, next) => {
 
 empleados.get('/', async (req, res, next) => {
     const emp = await db.query("SELECT * FROM empleados")
-    return res.status(200).json({ code: 1, message: emp })
+    res.json({
+        data: emp
+    })
 });
+
 /*Agregar al "if" que de como límite la cantidad de usuarios que esten en el sistema
 //por lo que debemos definir una variable que contenga a tiempo real los empleados
 del sistema

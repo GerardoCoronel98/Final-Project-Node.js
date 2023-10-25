@@ -47,7 +47,16 @@ body {
     z-index: 2;
 }
 
-form {
+.div-2 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 50px;
+}
+
+.div-1 {
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -133,12 +142,12 @@ button {
     text-transform: uppercase;
 }
 
-.form-container button {
+.div-1 button {
     margin-top: 17px;
     transition: 80ms ease-in;
 }
 
-.form-container button:hover {
+.div-1 button:hover {
     background: #FFF;
     color: var(--grad-clr1)
 }
