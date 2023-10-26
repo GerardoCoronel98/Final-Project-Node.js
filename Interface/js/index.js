@@ -8,7 +8,7 @@ function init() {
         document.querySelector('.btn-secondary').addEventListener('click', login), {
         }
     } else {
-        window.location.href = "employees-b.html"
+        window.location.href = "empleados.html"
     }
 }
 
@@ -27,7 +27,7 @@ function login() {
     }).then(function (res) {
         if (res.data.code == 200) {
             localStorage.setItem("token", res.data.message)
-            window.location.href = "employees-b.html";
+            window.location.href = "empleados.html";
         } else {
             alert("Usario y/o contraseña incorrectos")
         }
@@ -37,7 +37,7 @@ function login() {
     })
 }
 
-//Funcio´n signup
+//Función signup
 function signup() {
     var name = document.getElementById('input-name').value;
     var mail = document.getElementById('input-sign-mail').value;

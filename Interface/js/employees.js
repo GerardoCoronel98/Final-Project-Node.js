@@ -28,24 +28,15 @@ function displayEmployees(employees) {
 
     while (table.rows.length > 1) {
         table.deleteRow(1);
-    }
-
-    for (var i = 0; i < employees.length; i++) {
+    } for (var i = 0; i < employees.length; i++) {
         var row = table.insertRow(i + 1);
+        var propertyOrder = ['id', 'name', 'last_name', 'phone', 'email', 'address'];
 
-        var cell1 = row.insertCell(0);
-        var cell2 = row.insertCell(1);
-        var cell3 = row.insertCell(2);
-        var cell4 = row.insertCell(3);
-        var cell5 = row.insertCell(4);
-        var cell6 = row.insertCell(5);
-
-        cell1.innerHTML = employees[i].id;
-        cell2.innerHTML = employees[i].name;
-        cell3.innerHTML = employees[i].last_name;
-        cell4.innerHTML = employees[i].phone;
-        cell5.innerHTML = employees[i].email;
-        cell6.innerHTML = employees[i].address;
+        for (var j = 0; j < propertyOrder.length; j++) {
+            var cell = row.insertCell(j);
+            cell.innerHTML = employees[i][propertyOrder[j]];
+            cell.className = 'table-cell';
+        }
     }
 }
 
